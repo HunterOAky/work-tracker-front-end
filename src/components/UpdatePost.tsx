@@ -68,7 +68,7 @@ function UpdatePost(props: {postProp:IPosts}) {
 
 	return (
 		<div>
-      <Button onClick={handleOpen}>Update</Button>
+      <Button sx={{color:"#6b9080"}} onClick={handleOpen}>Update</Button>
       <Modal
         open={open}
         onClose={handleClose}

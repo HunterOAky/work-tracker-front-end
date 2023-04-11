@@ -16,8 +16,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import Box from '@mui/material/Box';
 
-
-
 interface IPosts {
   postId: string;
   title: string;
@@ -90,8 +88,8 @@ function StopWatch(props: {stopWatchProp:IPosts}) {
 
 	return (
 		<div className="stopwatch">
-      <div style={{marginTop:'2%'}} key={props.stopWatchProp.postId} className="numbers">
-        <div style={{ width: '100%' }}>
+      <div style={{marginTop:'1%', marginRight:'22%'}} key={props.stopWatchProp.postId} className="numbers">
+        <div style={{ width: '100%'}}>
         <Box
           component="div"
           sx={{
@@ -104,8 +102,8 @@ function StopWatch(props: {stopWatchProp:IPosts}) {
             border: '1px solid',
             borderColor: (theme) =>
               theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
-            borderRadius: 2,
-            fontSize: '2rem',
+            borderRadius: 3,
+            fontSize: '1.5rem',
             fontWeight: '700',
             marginLeft: '30%',
           }}
@@ -117,19 +115,23 @@ function StopWatch(props: {stopWatchProp:IPosts}) {
         </Box>
     </div>
       </div>
-      <div style={{marginTop:'5%', marginLeft:'15%'}} className="buttons">
-        <Button onClick={() => setRunning(true)}>Start</Button>
-        <Button onClick={() =>{
+      <div style={{marginTop:'3%'}} className="buttons">
+        <Button sx={{color:"#38b000"}} onClick={() => setRunning(true)}>Start</Button>
+        <Button 
+          sx={{color:"#d90429"}}
+          onClick={() =>{
 					setRunning(false)
 					dispatch(updatePost({id: props.stopWatchProp.postId, time: time }))
           updatePostFunc({postId:props.stopWatchProp.postId, title:props.stopWatchProp.title, content:props.stopWatchProp.content, timeSpent:time, date: props.stopWatchProp.date})
 					}}>Stop</Button>
-        <Button onClick={() => {
+        <Button 
+          sx={{color:"black"}}
+          onClick={() => {
 					setTime(0)
 					dispatch(updatePost({id: props.stopWatchProp.postId, time: 0 }))
           updatePostFunc({postId:props.stopWatchProp.postId, title:props.stopWatchProp.title, content:props.stopWatchProp.content, timeSpent:time, date: props.stopWatchProp.date})
 					}}>Reset</Button>
-        <Button onClick={()=>handleClickOpen()}>Enter Time</Button>
+        <Button sx={{color:"black"}} onClick={()=>handleClickOpen()}>Enter Time</Button>
         <Dialog open={open} onClose={handleClose}>
         <DialogTitle></DialogTitle>
         <DialogContent>
@@ -153,7 +155,7 @@ function StopWatch(props: {stopWatchProp:IPosts}) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={() => {handleManualTimeUpdate(manualTimeUpdate!.format('HH:mm:ss'))}}>Update Time</Button>
+          <Button sx={{color:"black"}} onClick={() => {handleManualTimeUpdate(manualTimeUpdate!.format('HH:mm:ss'))}}>Update Time</Button>
         </DialogActions>
       </Dialog>
       </div>
